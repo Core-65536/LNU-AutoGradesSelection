@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 
 # Author : Core_65536
 # Version : 1.0
-# Copyright (c) [2024] [Core_65536]. All rights reserved.
+# Copyright (c) 2024 Core_65536. All rights reserved.
 
 # 将密码进行MD5加密
 def md5_encode(password):
