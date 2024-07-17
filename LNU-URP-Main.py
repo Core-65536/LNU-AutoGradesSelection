@@ -12,6 +12,7 @@ import UrpUtils
 # Author : Core_65536
 # Version : 1.0
 # License : Apache-2.0
+# Special Thanks To github.com/sml2h3/ddddocr
 def main():
     # 初始化OCR
     sys.stdout = open(os.devnull, 'w')
