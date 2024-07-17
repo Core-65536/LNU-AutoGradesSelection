@@ -9,7 +9,9 @@ import winsound
 import UrpNet
 import UrpUtils
 
-
+# Author : Core_65536
+# Version : 1.0
+# License : Apache-2.0
 def main():
     # 初始化OCR
     sys.stdout = open(os.devnull, 'w')
