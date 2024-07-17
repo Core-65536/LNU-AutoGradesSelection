@@ -2,7 +2,7 @@ import requests
 
 # Author : Core_65536
 # Version : 1.0
-# Copyright (c) [2024] [Core_65536]. All rights reserved.
+# Copyright (c) 2024 Core_65536. All rights reserved.
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
