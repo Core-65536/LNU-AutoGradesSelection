@@ -26,7 +26,7 @@ def main():
     # URL
     login_page_url = 'http://jwstudent.lnu.edu.cn/'
     login_url = 'http://jwstudent.lnu.edu.cn/j_spring_security_check'
-    auth_url = 'http://jwstudent.lnu.edu.cn/student/courseSelect/courseSelect/index?mobile=false'
+    auth_url = ''http://jwstudent.lnu.edu.cn/index'
 
     # 创建一个会话对象
     session = requests.Session()
@@ -50,7 +50,7 @@ def main():
     # 访问需要认证的页面
     rp = UrpNet.Loop_GET(session, auth_url, {})
     # 输出页面内容
-    if rp.text.find("选课") != -1:
+    if rp.text.find("欢迎您") != -1:
         print("登录成功 !")
     else:
         print("登录失败 !")
