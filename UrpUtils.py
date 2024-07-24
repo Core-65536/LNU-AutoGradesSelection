@@ -56,21 +56,34 @@ def GetTokenValue(session, login_page_url):
 def GetCourseGrades(session, academic_year_code, term_code):
     # 首先获取callback前的随机生成的十位字符
     GradesUrl = 'http://jwstudent.lnu.edu.cn/student/integratedQuery/scoreQuery/allPassingScores/index'
+    UrpNet.Set_headers('http://jwstudent.lnu.edu.cn/student/integratedQuery/scoreQuery/coursePropertyScores/index'
+                       '?mobile=false')
     rp = UrpNet.Loop_GET(session, GradesUrl, data={})
     pos = rp.text.find('/callback') - 27
     token = rp.text[pos:pos + 10]
     # 拼接成绩查询url
     GradesUrl = 'http://jwstudent.lnu.edu.cn/student/integratedQuery/scoreQuery/' + token + '/allPassingScores/callback'
+    UrpNet.Set_headers('http://jwstudent.lnu.edu.cn/student/integratedQuery/scoreQuery/allPassingScores/index?mobile'
+                       '=false')
     rp = json.loads(UrpNet.Loop_GET(session, GradesUrl, data={}).text)
     grades = []
     # 遍历获取当前学期成绩
     for term in rp['lnList']:
+        # grades.extend(term['cjList'])
         if term['cjbh'] == f'{academic_year_code}学年秋(两学期)' and term_code == '1':
             grades.extend(term['cjList'])
         elif term['cjbh'] == f'{academic_year_code}学年春(两学期)' and term_code == '2':
             grades.extend(term['cjList'])
     # 输出成绩
-    # print(grades)
+    TotalCredits = 0.00
+    scores = 0.00
+    gpa = 0.00
     for grade in grades:
         print(f"课程名称: {grade['courseName']}, 成绩: {grade['courseScore']}")
+        TotalCredits += float(grade['credit'])
+        scores += float(grade['courseScore']) * float(grade['credit'])
+        gpa += float(grade['gradePointScore']) * float(grade['credit'])
+    print(
+        f"总学分: {TotalCredits}, 加权平均分: %.4f , 加权平均绩点: %.4f" % (scores / TotalCredits, gpa / TotalCredits))
+
     return len(grades)
