@@ -1,5 +1,4 @@
-# Alert：目前教务系统存在封IP情况，请谨慎使用！
-# (主要是我也不知道我这1.1版本绕过去没，尽量查完就不用了吧)
+# 本项目已转到 github.com/Core-65536/LNU-URP ，这里不再更新
 
 # LNU-AutoGradesSelection
 辽宁大学教务网站自动查询成绩脚本
